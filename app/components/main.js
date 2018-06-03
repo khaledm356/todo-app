@@ -51,15 +51,31 @@ export default class Main extends Component {
     }
 
     addNote(){
-        alert('test')
+        if(this.state.noteText){
+            var d = new Date();
+            this.state.noteArray.push({
+                'date':d.getFullYear()+
+                "/"+(d.getMonth()+1) +
+                "/"+ d.getDate(),
+                'note': this.state.noteText
+            });
+            this.setState({ noteArray: this.state.noteArray });
+            this.setState({noteText:''});
+        }
     }
+
+    // deleteNote(key){
+    //     this.state.noteArray.splice(key, 1);
+    //     this.setState({noteArray: this.state.noteArray});
+    // }
 }
 
+
 const styles = StyleSheet.create({
-  container: {
-    flex: 1,
-  },
-  header: {
+    container: {
+        flex: 1,
+    },
+    header: {
         backgroundColor: '#E91E63',
         alignItems: 'center',
         justifyContent:'center',
